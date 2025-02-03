@@ -7,6 +7,14 @@
 <div class="row">
 
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+            {% for message in messages%}
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                <strong class="text-dark">{{ message }}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
         <h2>Gestion de cursos</h2>
         <div class="card">
             <div class="card-body">
@@ -44,21 +52,23 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="border: 1px solid #000000;">Codigo</th>
-                        <th style="border: 1px solid #000000;">Nombre</th>
-                        <th style="border: 1px solid #000000;">Creditos</th>
-                        <th colspan="2" style="border: 1px solid #000000;"><center>Opciones</center></th>
+                        <th>#</th>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Creditos</th>
+                        <th colspan="2"><center>Opciones</center></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for c in cursos %}
 
-                    <tr style="border: 1px solid #000000;">
-                        <td style="border: 1px solid #000000;">{{c.codigo}}</td>
-                        <td style="border: 1px solid #000000;">{{c.nombre}}</td>
-                        <td style="border: 1px solid #000000;">{{c.creditos}}</td>
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.codigo}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.creditos}}</td>
                         <td><center><a href="edicioncurso/{{c.codigo}}" class="btn btn-info">Editar</a></center></td>
-                        <td><center><a href="eliminarcurso/{{c.codigo}}" class="btn btn-danger">Eliminar</a></center></td>
+                        <td><center><a href="eliminarcurso/{{c.codigo}}" class="btn btn-danger btneliminacion">Eliminar</a></center></td>
                     </tr>
                     {% endfor %}
                 </tbody>
