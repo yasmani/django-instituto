@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+
+{% block title %} Instituto Yasmani {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+
+        <h2>Edicion de cursos</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editacurso/" method="POST">{% csrf_token %}
+                    <div class="form-group" style="margin-top: 10px;">
+                        <input type="text" name="textcodigo" id="textcodigo" value="{{curso.codigo}}" class="form-control" placeholder="Codigo" minlength="6" maxlength="6" readonly required>
+
+                    </div>
+
+                    <div class="form-group" style="margin-top: 10px;">
+                        <input type="text" name="textnombre" id="textnombre" value="{{curso.nombre}}"  class="form-control" placeholder="Nombre"  maxlength="50" required>
+                        
+                    </div>
+
+                    <div class="form-group" style="margin-top: 10px;">
+                        <input type="text" name="numcredito" id="numcredito" value="{{curso.creditos}}" class="form-control"  minlength="1" maxlength="9"  value="1" required>
+                        
+                    </div>
+
+                    <div class="form-group" style="margin-top: 10px;">
+                        <button type="submit" class="btn btn-success btn-block text-white" style="width: 100%;">Guardar</button>
+                        
+                    </div>
+
+                </form>
+
+    </div>
+</div>
+
+{% endblock %}
